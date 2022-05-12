@@ -1,0 +1,69 @@
+<div class="app-container">
+  <h1 class="main-heading">Registration Form</h1>
+  <form nz-row #userFrom = "ngForm" (ngSubmit)="storeUserdata()">
+    <div class="form-group" nz-col nzSpan="8">
+      <label for="name">*Name:</label>
+      <input type="text" id ="name" class=" form-control input" name="name" [(ngModel)]="userModel.name" nzrequired>
+    </div>
+    <div class="form-group" nz-col nzSpan="8">
+      <label for="email">*Email:</label>
+      <input type="text" id ="email" class="form-control input" name="email"  [(ngModel)]="userModel.email" nzrequired>
+    </div>
+    <div class="form-group" nz-col nzSpan="8">
+      <label for="address">*Address:</label>
+      <input type="text" id="address" class="form-control input" name="address" [(ngModel)]="userModel.address" nzrequired>
+    </div>
+    <div class="form-group" nz-col nzSpan="8">
+      <label for="phoneno">*Phone no:</label>
+      <input type="number" id="phoneno" class="form-control input" name="phoneno" [(ngModel)]="userModel.phoneno" nzrequired>
+    </div>
+   
+    <div class="form-group" nz-col nzSpan="8" >
+      <br/>
+      <select class="custom-select" name ="topic"   [(ngModel)]="userModel.topic">
+        <option selected>Select topics</option>
+        <option  *ngFor="let topic of topics">{{topic}}</option>
+      </select>
+    </div>
+    <br />
+    <div class="form-group" nz-col nzSpan="8" >
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea name = "textarea" [(ngModel)]="userModel.textarea" class="form-control input" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <br/>
+    <div class="form-check" >
+      <input type="radio" [(ngModel)]="userModel.gender" class="form-check-input" id="radio1" name="gender" value="male" checked>Male
+      <label class="form-check-label" for="radio1"></label>
+    </div>
+    <div class="form-check" >
+      <input type="radio" [(ngModel)]="userModel.gender" class="form-check-input" id="radio2" name="gender" value="female">Female
+      <label class="form-check-label" for="radio2"></label>
+    </div>
+    <br/>
+    <br/>
+    <div>
+      <button class="btn btn-primary"  type="submit">Submit</button>
+      <button class="btn btn-primary m-4" type="submit">Reset</button>
+    </div>
+  </form>
+</div>
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.address }}</td>
+      <td>
+        <a>Action</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
